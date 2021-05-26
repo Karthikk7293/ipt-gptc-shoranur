@@ -1,0 +1,81 @@
+<section >
+    
+    <div class="raw">
+        <div class="col-md-5">
+            
+            <h1>Theatre Sign In</h1>
+<a href="#"><label for="show" class="close-btn fas fa-times" title="close"></label></a> 
+<form class="form" method="POST" action="admin/login" >
+ 
+  <div class="form-group">
+    <label class="label">Email address</label>
+    <input type="email" class="form-control" name="email"  placeholder="Enter email" >
+    
+  </div>
+  <div class="form-group">
+    <label class="label" >Password</label>
+    <input type="password" class="form-control" name="password"  placeholder="Password" >
+  </div>
+ 
+ <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+        </div>
+    </div>
+    
+</section>
+
+
+<style>
+    a .close-btn{
+        color: black;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+    section{
+        width: 100%;
+        height: 100vh;
+    }
+    h1{
+        color: black;
+        text-align: center;
+    }
+    
+    .raw{
+        margin-top: 5rem;
+        
+    }
+    .label{
+        color: rgb(0, 0, 0);
+        width: 29rem;
+       text-align: left;
+       font-weight: bold;
+       
+    }
+    .col-md-5{
+        height:30rem;
+        width: 28rem;
+        padding: 5%;
+        margin: auto;
+        position: relative;
+        border-radius: 10px;
+        background: rgb(200 234 230);
+    }
+    .form-control{
+        border-radius: 0px;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        border-bottom: 1px solid black;
+        padding-left: 10px;
+        background:transparent;  
+    } 
+    .form{
+        background: rgb(127, 202, 236);
+        border-radius: 10px;
+        padding: 2rem;
+    }
+</style>
