@@ -59,5 +59,28 @@ router.get('/asap',(req,res)=>{
   res.render('user/asap')
 })
 
+router.get('/fecilities',(req,res)=>{
+  res.render('user/fecilities')
+
+})
+
+router.get('/gallery',(req,res)=>{
+  res.render('user/gallery')
+})
+
+router.get('/bog',(req,res)=>{
+  res.render('user/bog')
+})
+
+router.get('/downloads',(req,res)=>{
+  res.render('user/downloads')
+})
+
+router.get('/contactUs',(req,res)=>{
+  res.render('user/contactUs')
+})
+router.get('/developers',(req,res)=>{
+  res.render('user/developer')
+})
 
 module.exports = router;

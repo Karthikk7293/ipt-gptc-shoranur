@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+
+  <!-- Custom fonts for this template-->
+  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+        <div class="sidebar-brand-icon rotate-n-15">
+
+        </div>
+        <div class="sidebar-brand-text mx-3">Dash Bord<sup></sup></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+
+
+      <!-- Divider -->
+
+
+
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Departments</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+
+            <a class="collapse-item" href="/admin/printing">Printing Technology</a>
+            <a class="collapse-item" href="/admin/electronics">Electronics Engineering</a>
+            <a class="collapse-item" href="/admin/computer">Computer Engineering</a>
+            <a class="collapse-item" href="/admin/general">General Departments</a>
+            <a class="collapse-item" href="/admin/mechanical">Mechanical Workshop</a>
+            <a class="collapse-item" href="/admin/office">Office</a>
+
+          </div>
+        </div>
+      </li>
+
+
+      <!-- Nav Item - Pages Collapse Menu -->
+
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+          aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Gallery</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="/admin/nccGallery">NCC</a>
+            <a class="collapse-item" href="/admin/nssGallery">NSS</a>
+            <a class="collapse-item" href="/admin/iedcGallery">IEDC</a>
+            <a class="collapse-item" href="/admin/hostelGallery">HOSTEL</a>
+            <a class="collapse-item" href="/admin/auditoriumGallery">AUDITORIUM</a>
+            <a class="collapse-item" href="/admin/WorkShopGallery">WORK SHOP</a>
+            <a class="collapse-item" href="/admin/AsapGallery">ASAP</a>
+            <a class="collapse-item" href="/admin/libraryGallery">LIBRARY</a>
+            <a class="collapse-item" href="/admin/seminarHallGallery">SEMINAR HALL</a>
+            <a class="collapse-item" href="/admin/canteenGallery">CANTEEN</a>
+          </div>
+        </div>
+      </li>
+      <!-- Divider -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+          aria-controls="collapsePages">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Co-Curricular</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+
+            <a class="collapse-item" href="/admin/nccHome">NCC</a>
+
+            <a class="collapse-item" href="/admin/nssHome">NSS</a>
+
+            <a class="collapse-item" href="/admin/iedcHome">IEDC</a>
+
+            <a class="collapse-item" href="/admin/asapHome">ASAP</a>
+
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/landingPage">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Home</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/principal">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Principal</span></a>
+      </li>
+
+      <hr class="sidebar-divider my-0">
+
+
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+      <!-- Sidebar Message -->
+
+
+    </ul>
+    <!-- End of Sidebar -->
+
+
+
+
+    <div class="col-md-4">
+      <div class="head m-auto">
+        <h1>Principal</h1>
+      </div>
+
+      <!-- Card deck -->
+      <div class="card-deck ">
+
+        <div class="cards">
+
+
+
+          <!--Card content-->
+          <div class="card-body ">
+            <!--Title-->
+            <form method="POST" action="/admin" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input type="text" class="form-control" value="{{principal.name}}" id="exampleInputEmail1" name="name"
+                  aria-describedby="emailHelp">
+
+
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Qualifications</label>
+                <input type="text" class="form-control" value="{{principal.qualification}} " id="exampleInputPassword1"
+                  name="qualification">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Image</label>
+                <input type="file" class="form-control" onchange="viewImage(event)" id="exampleInputPassword1"
+                  name="image">
+
+              </div>
+
+              <div>
+                <button type="reset" class="btn btn-danger">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+        <!-- Card -->
+
+        <!-- Card -->
+      </div>
+
+    </div>
+    <div class="col-md-3 ml-auto mr-auto mt-5">
+      <!--Card image-->
+      <div class="view overlay ">
+        <img class="card-img-top cardimage" id="imageView" src="/assent/images/logos/user.png" alt="" />
+        <a href="#!">
+
+        </a>
+      </div>
+    </div>
+    <!-- Card deck -->
+
+
+
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+
+
+  <!-- Logout Modal-->
+
+  <style>
+    .head {
+      width: 100%;
+      height: auto;
+    }
+
+    .cardimage {
+      width: 25rem;
+      height: 25rem;
+    }
+  </style>
+  <script>
+    function viewImage(event) {
+      document.getElementById('imageView').src = URL.createObjectURL(event.target.files[0])
+    }
+  </script>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+
+  <script>
+    var model = document.getElementById("collapseUtilities")
+    window.onclick = function (event) {
+      if (evet.target == model) {
+        model.style.display = "none";
+      }
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>

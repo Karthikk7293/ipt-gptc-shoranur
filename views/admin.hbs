@@ -106,13 +106,9 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
 
-            <a class="collapse-item" href="/admin/nccHome">NCC</a>
+            <a class="collapse-item" href="/admin/coCurricular">All</a>
 
-            <a class="collapse-item" href="/admin/nssHome">NSS</a>
-
-            <a class="collapse-item" href="/admin/iedcHome">IEDC</a>
-
-            <a class="collapse-item" href="/admin/asapHome">ASAP</a>
+          
 
           </div>
         </div>
@@ -143,38 +139,41 @@
     <!-- End of Sidebar -->
 
 
- 
-     
-     <div class="col-md-4">
-       <div class="head m-auto">
-          <h1>Principal</h1>
-        </div>
-      
-        <!-- Card deck -->
+
+
+    <div class="col-md-4">
+      <div class="head m-auto">
+        <h1>Principal</h1>
+      </div>
+
+      <!-- Card deck -->
       <div class="card-deck ">
-      
+
         <div class="cards">
-         
-         
+
+
 
           <!--Card content-->
           <div class="card-body ">
             <!--Title-->
-            <form method="POST" action="/admin" enctype="multipart/form-data" >
+            <form method="POST" action="/admin" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
-                <input type="text" class="form-control" value="{{principal.name}}" id="exampleInputEmail1" name="name" aria-describedby="emailHelp">
-                  
+                <input type="text" class="form-control" value="{{principal.name}}" id="exampleInputEmail1" name="name"
+                  aria-describedby="emailHelp">
+
 
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Qualifications</label>
-                <input type="text" class="form-control" value="{{principal.qualification}} " id="exampleInputPassword1" name="qualification">
+                <input type="text" class="form-control" value="{{principal.qualification}} " id="exampleInputPassword1"
+                  name="qualification">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Image</label>
-                <input type="file" class="form-control"  onchange="viewImage(event)"  id="exampleInputPassword1" name="image" >
-                  
+                <input type="file" class="form-control" onchange="viewImage(event)" id="exampleInputPassword1"
+                  name="image">
+
               </div>
 
               <div>
@@ -190,19 +189,19 @@
 
         <!-- Card -->
       </div>
-     
-     </div>
-      <div class="col-md-3 ml-auto mr-auto mt-5">
- <!--Card image-->
-          <div class="view overlay ">
-            <img class="card-img-top cardimage" id="imageView" src="/assent/images/logos/user.png" alt=""  />
-            <a href="#!">
-              
-            </a>
-          </div>
+
+    </div>
+    <div class="col-md-3 ml-auto mr-auto mt-5">
+      <!--Card image-->
+      <div class="view overlay ">
+        <img class="card-img-top cardimage" id="imageView" src="/assent/images/logos/user.png" alt="" />
+        <a href="#!">
+
+        </a>
       </div>
-      <!-- Card deck -->
-   
+    </div>
+    <!-- Card deck -->
+
 
 
 
@@ -215,38 +214,38 @@
   <!-- Logout Modal-->
 
   <style>
-    .head{
+    .head {
       width: 100%;
       height: auto;
     }
-    
-    .cardimage{
+
+    .cardimage {
       width: 25rem;
       height: 25rem;
     }
   </style>
   <script>
-  function viewImage(event){
-    document.getElementById('imageView').src=URL.createObjectURL(event.target.files[0])
-  }
-</script>
+    function viewImage(event) {
+      document.getElementById('imageView').src = URL.createObjectURL(event.target.files[0])
+    }
+  </script>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="/vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+  <script src="/js/demo/chart-area-demo.js"></script>
+  <script src="/js/demo/chart-pie-demo.js"></script>
 
   <script>
     var model = document.getElementById("collapseUtilities")
@@ -263,4 +262,3 @@
 </body>
 
 </html>
-

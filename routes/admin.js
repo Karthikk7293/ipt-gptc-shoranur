@@ -1,10 +1,11 @@
+const { response } = require('express');
 var express = require('express');
 var router = express.Router();
 var adminHealpers =require('../healpers/adminHealpers')
 
 const varifyLogin=(req,res,next)=>{
-
-  if (req.session.adminLogged){
+ let admin = req.session.adminLogged
+  if (admin){
     next()
   }else{
     res.render('admin/login',{admin:true})
@@ -29,24 +30,24 @@ router.get('/',async function(req, res, next) {
   
  
 });
-router.post('/',(req,res)=>{
+router.post('/',varifyLogin,(req,res)=>{
   console.log("api call", req.body);
   console.log("admin id",req.session.admin._id);
   adminHealpers.createPrincipal(req.body,req.session.admin._id).then((response)=>{
     console.log("api response",response);
-
+   res.redirect("/admin")
   })
 
 })
 
 router.get('/login',(req,res)=>{
-  res.redirect("admin/login")
+  res.redirect("/admin/login")
 })
 
 router.post('/login',async(req,res)=>{
   console.log(req.body);
   console.log("api login call", req.body);
- // await adminHealpers.inseartAdminDetails(req.body)
+  //await adminHealpers.inseartAdminDetails(req.body)
   adminHealpers.doLogin(req.body).then((response)=>{
     //console.log(response.admin.name);
     //let admin = response.admin
@@ -57,121 +58,450 @@ router.post('/login',async(req,res)=>{
    //console.log(req.session.admin)
         res.render('admin',{admin:true})
     }else{
-      res.redirect('admin/login')
+      res.redirect('/admin/login')
     }
 }) 
 })
-router.get('/logout',varifyLogin,(req,res)=>{
+router.get('/logout',(req,res)=>{
   console.log("api request");
  req.session.destroy()
- res.redirect('admin/login')
+ res.redirect('/admin/login')
 })
 
-router.get('/printing',varifyLogin,(req,res)=>{
+router.get('/printing',varifyLogin,async(req,res)=>{
+  let name={name:"printing Technology"}
+  let data = await adminHealpers.getPrintingDetails()
+  console.log(data);
+  //console.log(data);
 
- res.render('admin/printing',{admin:true})
+ res.render('admin/printing',{admin:true,data,name})
 })
 
-router.get('/electronics',(req,res)=>{
+router.post('/printing',varifyLogin,(req,res)=>{
+  console.log('api call',req.body);
+  console.log('api image',req.files);
+  let image =req.files.image
+  adminHealpers.createPrintingStaff(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/assent/images/Printing/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/printing');
+      }else{
+        console.log(err);
+      }
+    })
+    
+  })
 
-  res.render('admin/electronics',{admin:true})
+ 
+})
+
+router.get('/electronics',varifyLogin,async(req,res)=>{
+  let name={name:"elctronics engineering"}
+  let data = await adminHealpers.getElectronicsDetails()
+ // console.log(data);
+  res.render('admin/electronics',{admin:true,data,name})
  })
 
- router.get('/computer',(req,res)=>{
+ router.post('/electronics',varifyLogin,(req,res)=>{
+  //console.log('api call',req.body);
+  //console.log('api image',req.files);
+  let image =req.files.image
+  adminHealpers.createElectronicsStaff(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/assent/images/electronics/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/electronics');
+      }else{
+        console.log(err);
+      }
+    })
+    
+  })
 
-  res.render('admin/computer',{admin:true})
+ 
+})
+
+
+ router.get('/computer',varifyLogin,async(req,res)=>{
+  let name={name:"computer engineering"}
+  let data = await adminHealpers.getComputerDetails()
+  // console.log(data);
+  res.render('admin/computer',{admin:true,data,name})
  })
 
- router.get('/general',(req,res)=>{
+ router.post('/computer',varifyLogin,async(req,res)=>{
+   //console.log('api call',req.body);
+  //console.log('api image',req.files);
+  let image =req.files.image
+  adminHealpers.createcomputerStaff(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/assent/images/computer/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/computer');
+      }else{
+        console.log(err);
+      }
+    })
+    
+  })
 
-  res.render('admin/general',{admin:true})
+ 
  })
 
- router.get('/mechanical',(req,res)=>{
-
-  res.render('admin/mechanical',{admin:true})
+ router.get('/general',varifyLogin,async(req,res)=>{
+  let name={name:"genaral department"}
+  let data = await adminHealpers.getGeneralDetails()
+  // console.log(data);
+  res.render('admin/general',{admin:true,data,name})
  })
 
- router.get('/office',(req,res)=>{
+router.post('/general',varifyLogin,(req,res)=>{
+  //console.log('api call',req.body);
+  //console.log('api image',req.files);
+  let image =req.files.image
+  adminHealpers.createGeneralStaff(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/assent/images/generalDepartment/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/general');
+      }else{
+        console.log(err);
+      }
+    })
+    
+  })
 
-  res.render('admin/office',{admin:true})
+})
+
+
+ router.get('/mechanical',varifyLogin,async(req,res)=>{
+  let name={name:"mechanical workshop"}
+  let data = await adminHealpers.getMechanicalDetails()
+  // console.log(data);
+  res.render('admin/mechanical',{admin:true,data,name})
  })
 
- router.get('/nccGallery',(req,res)=>{
+ router.post('/mechanical',varifyLogin,(req,res)=>{
+    //console.log('api call',req.body);
+  //console.log('api image',req.files);
+  let image =req.files.image
+  adminHealpers.createMechanicalStaff(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/assent/images/Workshop/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/mechanical');
+      }else{
+        console.log(err);
+      }
+    })
+    
+  })
+ })
 
-  res.render('admin/ncc-gallery',{admin:true})
+ router.get('/office',async(req,res)=>{
+  let name={name:"office"}
+  let data = await adminHealpers.getOfficeDetails()
+  // console.log(data);
+  res.render('admin/office',{admin:true,data,name})
+ })
+
+router.post('/office',varifyLogin,(req,res)=>{
+   //console.log('api call',req.body);
+  //console.log('api image',req.files);
+  let image =req.files.image
+  adminHealpers.createOfficeStaff(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/assent/images/Office/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/office');
+      }else{
+        console.log(err);
+      }
+    })
+    
+  })
+
+ })
+
+ router.get('/nccGallery',varifyLogin,async(req,res)=>{
+  let name={name:"ncc"}
+  let data = await adminHealpers.getNccImages()
+  console.log("ncc image",data);
+  res.render('admin/ncc-gallery',{admin:true,data,name})
+ })
+
+ router.post('/nccGallery',varifyLogin,(req,res)=>{
+  let image =req.files.image
+  adminHealpers.createNccGallery(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/images/ncc/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/ncc-gallery');
+      }else{
+        console.log(err);
+      }
+    })
+    
+  })
+
  })
  
- router.get('/nssGallery',(req,res)=>{
+ router.get('/nssGallery',varifyLogin,async(req,res)=>{
+  let name={name:"nss"}
+  let data = await adminHealpers.getNssImages()
+  console.log("ncc image",data);
 
-  res.render('admin/nss-gallery',{admin:true})
+  res.render('admin/nss-gallery',{admin:true,data,name})
+ })
+
+ router.post('/nssGallery',varifyLogin,(req,res)=>{
+  let image =req.files.image
+  adminHealpers.createNssGallery(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/images/nss/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/nss-gallery');
+      }else{
+        console.log(err);
+      }
+    })
+    
+  })
  })
  
- router.get('/iedcGallery',(req,res)=>{
+ router.get('/iedcGallery',varifyLogin,async(req,res)=>{
+  let name={name:"iedc "}
+  let data = await adminHealpers.getIedcImages()
+  console.log(" image",data);
+  res.render('admin/iedc-gallery',{admin:true,data,name})
+ })
 
-  res.render('admin/iedc-gallery',{admin:true})
+ router.post('/iedcGallery',varifyLogin,(req,res)=>{
+  let image =req.files.image
+  adminHealpers.createIedcGallery(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/images/iedc/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/iedc-gallery');
+      }else{
+        console.log(err);
+      }
+    })
+    
+  })
  })
  
- router.get('/hostelGallery',(req,res)=>{
+ router.get('/hostelGallery',varifyLogin,async(req,res)=>{
+  let name={name:"hostel "}
+  let data = await adminHealpers.getHostelImages()
+  console.log("image",data);
+  res.render('admin/hostel-gallery',{admin:true,data,name})
+ })
 
-  res.render('admin/hostel-gallery',{admin:true})
+ router.post('/hostelGallery',varifyLogin,(req,res)=>{
+  let image =req.files.image
+  adminHealpers.createHostelGallery(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/images/hostel/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/hostel-gallery');
+      }else{
+        console.log(err);
+        //alert("image uploading error try again!")
+        res.redirect('/admin/hostel-gallery');
+      }
+    })
+    
+  })
+
  })
  
- router.get('/auditoriumGallery',(req,res)=>{
+ router.get('/auditoriumGallery',varifyLogin,async(req,res)=>{
+  let name={name:"auditorium"}
+  let data = await adminHealpers.getAuditoriumImages()
+  console.log("image",data);
+  res.render('admin/auditorium-gallery',{admin:true,data,name})
+ })
 
-  res.render('admin/auditorium-gallery',{admin:true})
+ router.post('/auditoriumGallery',varifyLogin,(req,res)=>{
+  let image =req.files.image
+  adminHealpers.createAuditoriumGallery(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/images/auditorium/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/auditorium-gallery');
+      }else{
+        console.log(err);
+        //alert("image uploading error try again!")
+        res.redirect('/admin/auditorium-gallery');
+      }
+    })
+    
+  })
  })
  
- router.get('/workShopGallery',(req,res)=>{
+ router.get('/workShopGallery',varifyLogin,async(req,res)=>{
+  let name={name:"workshop"}
+  let data = await adminHealpers.getWorkshopImages()
+  console.log("image",data);
+  res.render('admin/workshop-gallery',{admin:true,data,name})
+ })
 
-  res.render('admin/workshop-gallery',{admin:true})
+ router.post('/workShopGallery',varifyLogin,(req,res)=>{
+  let image =req.files.image
+  adminHealpers.createWorkshopGallery(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/images/workshop/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/workshop-gallery');
+      }else{
+        console.log(err);
+       // alert("image uploading error try again!")
+        res.redirect('/admin/workshop-gallery');
+      }
+    })
+    
+  })
  })
  
- router.get('/asapGallery',(req,res)=>{
+ router.get('/asapGallery',varifyLogin,async(req,res)=>{
+  let name={name:"asap"}
+  let data = await adminHealpers.getAsapImages()
+  console.log("image",data);
+  res.render('admin/asap-gallery',{admin:true,data,name})
+ })
 
-  res.render('admin/asap-gallery',{admin:true})
+ router.post('/asapGallery',varifyLogin,(req,res)=>{
+  let image =req.files.image
+  adminHealpers.createAsapGallery(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/images/asap/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/asap-gallery');
+      }else{
+        console.log(err);
+        //alert("image uploading error try again!")
+        res.redirect('/admin/asap-gallery');
+      }
+    })
+    
+  })
  })
  
- router.get('/libraryGallery',(req,res)=>{
+ router.get('/libraryGallery',varifyLogin,async(req,res)=>{
+  let name={name:"library"}
+  let data = await adminHealpers.getLibraryImages()
+  console.log("image",data);
+  res.render('admin/library-gallery',{admin:true,data,name})
+ })
 
-  res.render('admin/library-gallery',{admin:true})
+ router.post('/libraryGallery',varifyLogin,(req,res)=>{
+  let image =req.files.image
+  adminHealpers.createLibraryGallery(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/images/library/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/library-gallery');
+      }else{
+        console.log(err);
+       // alert("image uploading error try again!")
+        res.redirect('/admin/library-gallery');
+      }
+    })
+    
+  })
  })
  
- router.get('/seminarHallGallery',(req,res)=>{
+ router.get('/seminarHallGallery',varifyLogin,async(req,res)=>{
+  let name={name:"seminar hall"}
+  let data = await adminHealpers.getSeminarhallImages()
+  console.log("image",data);
+  res.render('admin/seminarHall-gallery',{admin:true,data,name})
+ })
 
-  res.render('admin/seminarHall-gallery',{admin:true})
+ router.post('/seminarHallGallery',varifyLogin,(req,res)=>{
+  let image =req.files.image
+  adminHealpers.createSeminarhallGallery(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/images/seminarHall/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/seminarHall-gallery');
+      }else{
+        console.log(err);
+        //alert("image uploading error try again!")
+        res.redirect('/admin/seminarHall-gallery');
+      }
+    })
+    
+  })
  })
  
- router.get('/canteenGallery',(req,res)=>{
+ router.get('/canteenGallery',varifyLogin,async(req,res)=>{
+  let name={name:"canteen"}
+  let data = await adminHealpers.getCanteenImages()
+  console.log("image",data);
+  res.render('admin/canteen-gallery',{admin:true,data,name})
+ })
 
-  res.render('admin/canteen-gallery',{admin:true})
+ router.post('/canteenGallery',varifyLogin,(req,res)=>{
+  let image =req.files.image
+  adminHealpers.createCanteenGallery(req.session.admin._id,req.body).then((response)=>{
+    console.log("api response",response);
+    image.mv('./public/images/canteen/'+response+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/canteen-gallery');
+      }else{
+        console.log(err);
+        //alert("image uploading error try again!")
+        res.redirect('/admin/canteen-gallery');
+      }
+    })
+    
+  })
  })
  
- router.get('/nccHome',(req,res)=>{
+ router.get('/coCurricular',varifyLogin,async(req,res)=>{
+  let name={name:"ncc nss iedc asap"}
+  let data = await adminHealpers.getCoCurricularData()
+  console.log("image",data);
+  res.render('admin/co-curricular',{admin:true,data,name})
+ })
+ router.post('/coCurricular',varifyLogin,(req,res)=>{
+   let image= req.files.image
+   console.log("iamge",image);
+adminHealpers.createCoCurricular(req.body,req.session.admin._id).then((response)=>{
+  console.log(response.id);
+  console.log(response.status);
+  if(response.status){
+    image.mv('./public/images/coCurricular/'+response.id+'.jpg',(err,done)=>{
+      if(!err){
+        res.redirect('/admin/co-curricular');
+      }else{
+        console.log(err);
+        //alert("image uploading error try again!")
+        res.redirect('/admin/co-curricular');
+      }
+    })
+  }else{
+    alert("Dont upload same data  try another one!")
+        res.redirect('/admin/co-curricular');
+  }
 
-  res.render('admin/ncc-home',{admin:true})
+})
+
  })
  
- router.get('/nssHome',(req,res)=>{
-
-  res.render('admin/nss-home',{admin:true})
- })
- 
- router.get('/iedcHome',(req,res)=>{
-
-  res.render('admin/iedc-home',{admin:true})
- })
- 
- router.get('/asapHome',(req,res)=>{
-
-  res.render('admin/asap-home',{admin:true})
- })
-
  router.get('/landingPage',(req,res)=>{
 
   res.render('admin/landing-page',{admin:true})
  })
 
+ router.get('/principal',async(req,res)=>{
+   let data= await adminHealpers.getPrincipalDetails()
+   res.render('admin/principal',{admin:true})
+
+ })
  
  
  
