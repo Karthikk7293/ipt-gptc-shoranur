@@ -106,13 +106,9 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
 
-            <a class="collapse-item" href="/admin/nccHome">NCC</a>
+            <a class="collapse-item" href="/admin/coCurricular">All</a>
 
-            <a class="collapse-item" href="/admin/nssHome">NSS</a>
-
-            <a class="collapse-item" href="/admin/iedcHome">IEDC</a>
-
-            <a class="collapse-item" href="/admin/asapHome">ASAP</a>
+           
 
           </div>
         </div>
@@ -180,8 +176,10 @@
               </div>
               <div class="card-body card-body-cascade text-center">
                 <!-- Title -->
-               <a href="/" class="btn btn-danger" >Cancel</a>
-                <a href="/" class="btn btn-success" >Remove</a>
+                <a class="btn btn-danger" type="reset">Cancel</a>
+                <a href="/admin/delete-asap/{{this._id}}" onclick="return confirm('are u sure want to delete ?')"
+                  class="btn btn-success">Remove</a>
+
                 <!-- Text -->
               </div>
             </div>

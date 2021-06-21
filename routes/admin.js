@@ -8,7 +8,7 @@ const varifyLogin=(req,res,next)=>{
   if (admin){
     next()
   }else{
-    res.render('admin/login',{admin:true})
+    res.redirect('admin/login')
   }
 }
 
@@ -56,7 +56,7 @@ router.post('/login',async(req,res)=>{
         req.session.adminLogged=true
     req.session.admin=response.admin
    //console.log(req.session.admin)
-        res.render('admin',{admin:true})
+        res.redirect('/admin')
     }else{
       res.redirect('/admin/login')
     }
@@ -88,6 +88,7 @@ router.post('/printing',varifyLogin,(req,res)=>{
         res.redirect('/admin/printing');
       }else{
         console.log(err);
+        res.redirect('/admin/printing');
       }
     })
     
@@ -95,6 +96,14 @@ router.post('/printing',varifyLogin,(req,res)=>{
 
  
 })
+router.get('/delete-printing/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeletePrintingStaff(req.params.id).then((response)=>{
+   // console.log("api delete",response);
+    res.redirect('/admin/printing')
+  })
+})
+
 
 router.get('/electronics',varifyLogin,async(req,res)=>{
   let name={name:"elctronics engineering"}
@@ -114,12 +123,21 @@ router.get('/electronics',varifyLogin,async(req,res)=>{
         res.redirect('/admin/electronics');
       }else{
         console.log(err);
+        res.redirect('/admin/electronics');
       }
     })
     
   })
 
  
+})
+
+router.get('/delete-electronics/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteElectronicsStaff(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/electronics')
+  })
 })
 
 
@@ -141,6 +159,7 @@ router.get('/electronics',varifyLogin,async(req,res)=>{
         res.redirect('/admin/computer');
       }else{
         console.log(err);
+        res.redirect('/admin/computer');
       }
     })
     
@@ -148,6 +167,14 @@ router.get('/electronics',varifyLogin,async(req,res)=>{
 
  
  })
+
+ router.get('/delete-computer/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteComputerStaff(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/computer')
+  })
+})
 
  router.get('/general',varifyLogin,async(req,res)=>{
   let name={name:"genaral department"}
@@ -167,11 +194,20 @@ router.post('/general',varifyLogin,(req,res)=>{
         res.redirect('/admin/general');
       }else{
         console.log(err);
+        res.redirect('/admin/general');
       }
     })
     
   })
 
+})
+
+router.get('/delete-general/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteGeneralStaff(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/general')
+  })
 })
 
 
@@ -193,11 +229,19 @@ router.post('/general',varifyLogin,(req,res)=>{
         res.redirect('/admin/mechanical');
       }else{
         console.log(err);
+        res.redirect('/admin/mechanical');
       }
     })
     
   })
  })
+ router.get('/delete-mechanical/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteMechanicalStaff(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/mechanical')
+  })
+})
 
  router.get('/office',async(req,res)=>{
   let name={name:"office"}
@@ -217,12 +261,21 @@ router.post('/office',varifyLogin,(req,res)=>{
         res.redirect('/admin/office');
       }else{
         console.log(err);
+        res.redirect('/admin/office');
       }
     })
     
   })
 
  })
+ router.get('/delete-office/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteOfficeStaff(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/office')
+  })
+})
+
 
  router.get('/nccGallery',varifyLogin,async(req,res)=>{
   let name={name:"ncc"}
@@ -240,11 +293,19 @@ router.post('/office',varifyLogin,(req,res)=>{
         res.redirect('/admin/ncc-gallery');
       }else{
         console.log(err);
+        res.redirect('/admin/ncc-gallery');
       }
     })
     
   })
 
+ })
+ router.get('/delete-ncc/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteNccImages(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/ncc-gallery')
+  })
  })
  
  router.get('/nssGallery',varifyLogin,async(req,res)=>{
@@ -269,6 +330,14 @@ router.post('/office',varifyLogin,(req,res)=>{
     
   })
  })
+
+ router.get('/delete-nss/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteNssImages(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/nss-gallery')
+  })
+ })
  
  router.get('/iedcGallery',varifyLogin,async(req,res)=>{
   let name={name:"iedc "}
@@ -289,6 +358,14 @@ router.post('/office',varifyLogin,(req,res)=>{
       }
     })
     
+  })
+ })
+
+ router.get('/delete-iedc/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteIedcImages(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/iedc-gallery')
   })
  })
  
@@ -316,6 +393,14 @@ router.post('/office',varifyLogin,(req,res)=>{
   })
 
  })
+
+ router.get('/delete-hostel/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteHostelImages(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/hostel-gallery')
+  })
+ })
  
  router.get('/auditoriumGallery',varifyLogin,async(req,res)=>{
   let name={name:"auditorium"}
@@ -338,6 +423,13 @@ router.post('/office',varifyLogin,(req,res)=>{
       }
     })
     
+  })
+ })
+ router.get('/delete-auditorium/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteAuditoriumImages(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/auditorium-gallery')
   })
  })
  
@@ -364,6 +456,14 @@ router.post('/office',varifyLogin,(req,res)=>{
     
   })
  })
+
+ router.get('/delete-workshop/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteWorkshopImages(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/workshop-gallery')
+  })
+ })
  
  router.get('/asapGallery',varifyLogin,async(req,res)=>{
   let name={name:"asap"}
@@ -386,6 +486,14 @@ router.post('/office',varifyLogin,(req,res)=>{
       }
     })
     
+  })
+ })
+
+ router.get('/delete-asap/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteAsapImages(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/asap-gallery')
   })
  })
  
@@ -412,6 +520,14 @@ router.post('/office',varifyLogin,(req,res)=>{
     
   })
  })
+
+ router.get('/delete-library/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteLibraryImages(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/library-gallery')
+  })
+ })
  
  router.get('/seminarHallGallery',varifyLogin,async(req,res)=>{
   let name={name:"seminar hall"}
@@ -436,6 +552,14 @@ router.post('/office',varifyLogin,(req,res)=>{
     
   })
  })
+
+ router.get('/delete-seminarhall/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteSeminarhallImages(req.params.id).then((response)=>{
+   // console.log("api delete",response);
+    res.redirect('/admin/seminarHall-gallery')
+  })
+ })
  
  router.get('/canteenGallery',varifyLogin,async(req,res)=>{
   let name={name:"canteen"}
@@ -458,6 +582,14 @@ router.post('/office',varifyLogin,(req,res)=>{
       }
     })
     
+  })
+ })
+
+ router.get('/delete-canteen/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteCanteenImages(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/canteen-gallery')
   })
  })
  
@@ -490,6 +622,14 @@ adminHealpers.createCoCurricular(req.body,req.session.admin._id).then((response)
 
 })
 
+ })
+
+ router.get('/delete-coCurricular/:id',varifyLogin,(req,res)=>{
+  console.log(req.params.id);
+  adminHealpers.DeleteCocurricularImages(req.params.id).then((response)=>{
+    //console.log("api delete",response);
+    res.redirect('/admin/co-curricular-gallery')
+  })
  })
  
  router.get('/landingPage',(req,res)=>{

@@ -705,6 +705,118 @@ module.exports={
             //console.log("staff",staff);
             resolve(data)
         })
+    },
+    DeletePrintingStaff:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.PRINTING_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteElectronicsStaff:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.ELCTRONICS_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteComputerStaff:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.COMPUTER_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteGeneralStaff:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.GENERAL_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteMechanicalStaff:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.MECHANICAL_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteOfficeStaff:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.OFFICE_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteNccImages:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.NCC_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteNssImages:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.NSS_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteIedcImages:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.IEDC_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteAsapImages:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.ASAP_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteHostelImages:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.HOSTEL_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteAuditoriumImages:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.AUDITORIUM_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteWorkshopImages:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.WORKSHOP_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteLibraryImages:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.LIBRARY_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteSeminarhallImages:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.SEMINARHALL_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    DeleteCanteenImages:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.CANTEEN_COLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
     }
 
 
