@@ -18,6 +18,7 @@ module.exports={
     SEMINARHALL_COLLECTION:'seminarhall-gallery',
     CANTEEN_COLECTION:'canteen-gallery',
     CO_CURRICULAR_COLLECTION:'co-curricular',
+    HOD_COLLECTION:"hod"
 
 
     

@@ -52,19 +52,15 @@ module.exports={
                     }
                     db.get().collection(collection.PRINCIPAL_COLLECTION).insertOne(principalObj).then((data)=>{
                        console.log("api call for id",data.ops[0]._id);
-                        resolve(data.ops[0]._id)
+                       let id = data.ops[0]._id
+                        resolve({id,status:true})
                     })
 
+                  }else{
+                      resolve({status:false})
                   }
              
               
-        })
-    },
-    findPrincipalDetails:()=>{
-        return new Promise (async(resolve,reject)=>{
-           let principal = await db.get().collection(collection.PRINCIPAL_COLLECTION).find().toArray()
-           //console.log('principal object call',principal);
-           resolve(principal[0])
         })
     },
     getPrincipalDetails:()=>{
@@ -816,6 +812,54 @@ module.exports={
             db.get().collection(collection.CANTEEN_COLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
                 resolve(response)
             })
+        })
+    },
+    createHod:(data,adminId)=>{
+        return new Promise(async(resolve,reject)=>{
+
+            let hod = await db.get().collection(collection.HOD_COLLECTION).findOne({department:data.department})
+                  if(hod<1){
+                    let hodObj={
+                        admin:ObjectId(adminId),
+                        name:data.name,
+                        posision:data.posision,
+                        department:data.department
+                    }
+                    db.get().collection(collection.HOD_COLLECTION).insertOne(hodObj).then((data)=>{
+                       //console.log("api call for id",data.ops[0]._id);
+                       let id=data.ops[0]._id
+                        resolve({id,status:true})
+                    })
+
+                  }else{
+                      resolve({status:false});
+                  }
+             
+              
+        })
+    },
+    DeleteHodImages:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.HOD_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    getHodImages:()=>{
+        return new Promise(async(resolve,reject)=>{
+         let data = await db.get().collection(collection.HOD_COLLECTION).find().toArray()
+            //console.log("staff",staff);
+            resolve(data)
+        })
+    },
+    getHeadDetails:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let data = await db.get().collection(collection.HOD_COLLECTION).findOne({department:""})
+            if(data){
+                resolve(data)
+            }else{
+                resolve({status:false})
+            }
         })
     }
 

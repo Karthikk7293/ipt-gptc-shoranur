@@ -98,26 +98,23 @@
       </li>
       <!-- Divider -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-          aria-controls="collapsePages">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Co-Curricular</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
+                <a class="nav-link" href="/admin/coCurricular">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Co-Curricular</span></a>
+            </li>
 
-            <a class="collapse-item" href="/admin/coCurricular">All</a>
-
-            
-          </div>
-        </div>
-      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="/admin/landingPage">
           <i class="fas fa-fw fa-cog"></i>
           <span>Home</span></a>
       </li>
+      <li class="nav-item">
+                <a class="nav-link" href="/admin/hod">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>HOD</span></a>
+            </li>
+
 
       <li class="nav-item">
         <a class="nav-link" href="/admin/principal">
@@ -154,72 +151,38 @@
 
               <div class="view view-cascade team-img">
                 <img class="card-img-top" src="/images/ncc/{{this._id}}.jpg" alt="Card image cap" />
-                <div class="overlay">
-                  <div class="w3l-social">
-                    <ul>
-                      <li>
-                        <a href="#"><i class="icofont-facebook"></i></a>
-                      </li>
-                      <li>
-                        <a href="mailto:sabeeshk1988@gmail.com"><i class="icofont-email"></i></a>
-                      </li>
-                      <li>
-                        <a href="#"><i class="icofont-instagram"></i></a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <a href="#!">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
+
               </div>
               <div class="card-body card-body-cascade text-center">
                 <!-- Title -->
-               <a class="btn btn-danger" type="reset">Cancel</a>
+                <a class="btn btn-danger" type="reset">Cancel</a>
                 <a href="/admin/delete-ncc/{{this._id}}" onclick="return confirm('are u sure want to delete ?')"
                   class="btn btn-success">Remove</a>
-                  <!-- Text -->
+                <!-- Text -->
               </div>
             </div>
             <!-- Card Wider -->
           </div>
           {{/each}}
-          
+
           <div class="item">
             <div class=" card card-cascade wider">
               <!-- Card image -->
 
               <div class="view view-cascade team-img">
-                
+
                 <img class="card-img-top" id="imageView" src="/assent/images/logos/user.png" alt="" />
-                <div class="overlay">
-                  <div class="w3l-social">
-                    <ul>
-                      <li>
-                        <a href="#"><i class="icofont-facebook"></i></a>
-                      </li>
-                      <li>
-                        <a href="mailto:sabeeshk1988@gmail.com"><i class="icofont-email"></i></a>
-                      </li>
-                      <li>
-                        <a href="#"><i class="icofont-instagram"></i></a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <a href="#!">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
+
               </div>
               <div class="card-body card-body-cascade text-center">
                 <!-- Title -->
-                <form action="/admin/nccGallery" method="post" enctype="multipart/form-data" >
-                
-                <!-- Text -->
-                <input type="file" class="input" onchange="viewImage(event)"  name="image" >
+                <form action="/admin/nccGallery" method="post" enctype="multipart/form-data">
 
-                <button class="btn btn-success" class="input" type="submit">Add New</button>
-                <button class="btn btn-danger" class="input" type="reset">Cancel</button>
+                  <!-- Text -->
+                  <input type="file" class="input" onchange="viewImage(event)" name="image">
+                  <button class="btn btn-danger" class="input" type="reset">Cancel</button>
+                  <button class="btn btn-success" class="input" type="submit">Add New</button>
+
                 </form>
               </div>
             </div>
@@ -248,14 +211,14 @@
 
   <!-- Logout Modal-->
   <style>
-    .input{
+    .input {
       width: 100%;
       margin-top: 1rem;
       margin-bottom: 1rem;
 
     }
   </style>
-<script>
+  <script>
     function viewImage(event) {
       document.getElementById('imageView').src = URL.createObjectURL(event.target.files[0])
     }

@@ -244,11 +244,12 @@
       <!-- Grid row -->
       <div class="owl-carousel owl-theme card-deck">
         <div class="item">
+          {{#each staff}}
           <!-- Card Wider -->
           <div class="card card-cascade wider">
             <!-- Card image -->
             <div class="view view-cascade team-img">
-              <img class="card-img-top" src="assent/images/Workshop/Manikandan.jpg" alt="Card image cap" />
+              <img class="card-img-top" src="assent/images/Workshop/{{this._id}}.jpg" alt="Card image cap" />
               <div class="overlay">
                 <div class="w3l-social">
                   <ul>
@@ -272,132 +273,16 @@
             <!-- Card content -->
             <div class="card-body card-body-cascade text-center">
               <!-- Title -->
-              <h4 class="card-title"><strong>Manikandan V K</strong></h4>
+              <h4 class="card-title"><strong>{{this.name}}</strong></h4>
               <!-- Subtitle -->
-              <h5 class="blue-text pb-2"><strong>Workshop Foreman</strong></h5>
+              <h5 class="blue-text pb-2"><strong>{{this.posision}}</strong></h5>
               <!-- <h6>Ph:9288859326</h6> -->
               <!-- Text -->
             </div>
           </div>
           <!-- Card Wider -->
         </div>
-
-        <div class="item">
-          <!-- Card Wider -->
-          <div class="card card-cascade wider">
-            <!-- Card image -->
-            <div class="view view-cascade team-img">
-              <img class="card-img-top" src="assent/images/Workshop/Sivan.jpg" alt="Card image cap" />
-              <div class="overlay">
-                <div class="w3l-social">
-                  <ul>
-                    <li>
-                      <a href="#"><i class="icofont-facebook"></i></a>
-                    </li>
-                    <li>
-                      <a href="mailto:sivanmankara@gmail.com"><i class="icofont-email"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="icofont-instagram"></i></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
-
-            <!-- Card content -->
-            <div class="card-body card-body-cascade text-center">
-              <!-- Title -->
-              <h4 class="card-title"><strong>Sivan P C</strong></h4>
-              <!-- Subtitle -->
-              <h5 class="blue-text pb-2"><strong>Workshop Instructor</strong></h5>
-              <!-- <h6>Ph:9446327575</h6> -->
-              <!-- Text -->
-            </div>
-          </div>
-          <!-- Card Wider -->
-        </div>
-
-        <div class="item">
-          <!-- Card Wider -->
-          <div class="card card-cascade wider">
-            <!-- Card image -->
-            <div class="view view-cascade team-img">
-              <img class="card-img-top" src="assent/images/Workshop/Anas.jpg" alt="Card image cap" />
-              <div class="overlay">
-                <div class="w3l-social">
-                  <ul>
-                    <li>
-                      <a href="#"><i class="icofont-facebook"></i></a>
-                    </li>
-                    <li>
-                      <a href="mailto:anasthavakkal@gmail.com"><i class="icofont-email"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="icofont-instagram"></i></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
-
-            <!-- Card content -->
-            <div class="card-body card-body-cascade text-center">
-              <!-- Title -->
-              <h4 class="card-title"><strong>Anas S M</strong></h4>
-              <!-- Subtitle -->
-              <h5 class="blue-text pb-2"><strong>Trade Instructor</strong></h5>
-              <!-- <h6>Ph:9446622280</h6> -->
-              <!-- Text -->
-            </div>
-          </div>
-          <!-- Card Wider -->
-        </div>
-
-        <div class="item">
-          <!-- Card Wider -->
-          <div class="card card-cascade wider">
-            <!-- Card image -->
-            <div class="view view-cascade team-img">
-              <img class="card-img-top" src="assent/images/Workshop/SEbastian.jpg" alt="Card image cap" />
-              <div class="overlay">
-                <div class="w3l-social">
-                  <ul>
-                    <li>
-                      <a href="#"><i class="icofont-facebook"></i></a>
-                    </li>
-                    <li>
-                      <a href="mailto:sebansunny@iptgptc.ac.in"><i class="icofont-email"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="icofont-instagram"></i></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
-
-            <!-- Card content -->
-            <div class="card-body card-body-cascade text-center">
-              <!-- Title -->
-              <h4 class="card-title"><strong>Sabastian Joseph</strong></h4>
-              <!-- Subtitle -->
-              <h5 class="blue-text pb-2"><strong>Trade Instructor</strong></h5>
-              <!-- <h6>Ph:9496593080</h6> -->
-              <!-- Text -->
-            </div>
-          </div>
-          <!-- Card Wider -->
-        </div>
+{{/each}}
       </div>
     </div>
   </section>

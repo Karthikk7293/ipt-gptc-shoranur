@@ -98,31 +98,23 @@
       </li>
       <!-- Divider -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-          aria-controls="collapsePages">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Co-Curricular</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
+                <a class="nav-link" href="/admin/coCurricular">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Co-Curricular</span></a>
+            </li>
 
-            <a class="collapse-item" href="/admin/nccHome">NCC</a>
-
-            <a class="collapse-item" href="/admin/nssHome">NSS</a>
-
-            <a class="collapse-item" href="/admin/iedcHome">IEDC</a>
-
-            <a class="collapse-item" href="/admin/asapHome">ASAP</a>
-
-          </div>
-        </div>
-      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="/admin/landingPage">
           <i class="fas fa-fw fa-cog"></i>
           <span>Home</span></a>
       </li>
+      <li class="nav-item">
+                <a class="nav-link" href="/admin/hod">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>HOD</span></a>
+            </li>
+
 
       <li class="nav-item">
         <a class="nav-link" href="/admin/principal">
@@ -160,17 +152,17 @@
           <!--Card content-->
           <div class="card-body ">
             <!--Title-->
-            <form method="POST" action="/admin" enctype="multipart/form-data">
+            <form method="POST" action="/admin/principal" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
-                <input type="text" class="form-control" value="{{principal.name}}" id="exampleInputEmail1" name="name"
+                <input type="text" class="form-control" value="{{data.principal}}" id="exampleInputEmail1" name="name"
                   aria-describedby="emailHelp">
 
 
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Qualifications</label>
-                <input type="text" class="form-control" value="{{principal.qualification}} " id="exampleInputPassword1"
+                <input type="text" class="form-control" value="{{data.qualification}}" id="exampleInputPassword1"
                   name="qualification">
               </div>
               <div class="form-group">
@@ -183,6 +175,7 @@
               <div>
                 <button type="reset" class="btn btn-danger">Cancel</button>
                 <button type="submit" class="btn btn-primary">Update</button>
+
               </div>
 
             </form>
@@ -197,11 +190,12 @@
     </div>
     <div class="col-md-3 ml-auto mr-auto mt-5">
       <!--Card image-->
-      <div class="view overlay ">
-        <img class="card-img-top cardimage" id="imageView" src="/assent/images/logos/user.png" alt="" />
-        <a href="#!">
+      <div class="view  ">
+        <img class="card-img-top cardimage" id="imageView" src="/assent/images/principal/{{data._id}}.jpg" alt="" />
 
-        </a>
+        <a href="" class="btn " type="reset">Cancel</a>
+        <a href="" class="btn " type="submit">Delete</a>
+        
       </div>
     </div>
     <!-- Card deck -->

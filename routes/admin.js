@@ -17,13 +17,10 @@ const varifyLogin=(req,res,next)=>{
 router.get('/',async function(req, res, next) {
 
   if(req.session.adminLogged){
-   
-    let principal = await adminHealpers.findPrincipalDetails()
-  console.log('api response ' ,principal);
-  res.render('admin',{admin:true,principal})
+  res.render('admin',{admin:true})
 
   }else{
-    res.render('admin/login')
+    res.render('admin/login',{admin:true})
   }
 
   
@@ -33,17 +30,12 @@ router.get('/',async function(req, res, next) {
 router.post('/',varifyLogin,(req,res)=>{
   console.log("api call", req.body);
   console.log("admin id",req.session.admin._id);
-  adminHealpers.createPrincipal(req.body,req.session.admin._id).then((response)=>{
-    console.log("api response",response);
-   res.redirect("/admin")
-  })
+  
+  res.redirect("/admin")
 
 })
 
-router.get('/login',(req,res)=>{
-  res.redirect("/admin/login")
-})
-
+    
 router.post('/login',async(req,res)=>{
   console.log(req.body);
   console.log("api login call", req.body);
@@ -616,7 +608,7 @@ adminHealpers.createCoCurricular(req.body,req.session.admin._id).then((response)
       }
     })
   }else{
-    alert("Dont upload same data  try another one!")
+    //alert("Dont upload same data  try another one!")
         res.redirect('/admin/co-curricular');
   }
 
@@ -628,19 +620,97 @@ adminHealpers.createCoCurricular(req.body,req.session.admin._id).then((response)
   console.log(req.params.id);
   adminHealpers.DeleteCocurricularImages(req.params.id).then((response)=>{
     //console.log("api delete",response);
-    res.redirect('/admin/co-curricular-gallery')
+    res.redirect('/admin/co-curricular')
   })
  })
- 
- router.get('/landingPage',(req,res)=>{
 
-  res.render('admin/landing-page',{admin:true})
+
+ router.get('/hod',varifyLogin,async(req,res)=>{
+  let name={name:"PRINCIPAL & HOD"}
+  let data = await adminHealpers.getHodImages()
+  res.render('admin/hod',{admin:true,name,data})
+})
+router.post('/hod',varifyLogin,(req,res)=>{
+  let image= req.files.image
+  console.log("iamge",image);
+adminHealpers.createHod(req.body,req.session.admin._id).then((response)=>{
+ console.log(response.id);
+ console.log(response.status);
+ if(response.status){
+   image.mv('./public/images/hod/'+response.id+'.jpg',(err,done)=>{
+     if(!err){
+       res.redirect('/admin/hod');
+     }else{
+       console.log(err);
+       //alert("image uploading error try again!")
+       res.redirect('/admin/hod');
+     }
+   })
+ }else{
+   //alert("Dont upload same data  try another one!")
+       res.redirect('/admin/hod');
+ }
+
+})
+
+})
+
+
+router.get('/delete-hod/:id',varifyLogin,(req,res)=>{
+ console.log(req.params.id);
+ adminHealpers.DeleteHodImages(req.params.id).then((response)=>{
+   //console.log("api delete",response);
+   res.redirect('/admin/hod')
+ })
+})
+
+
+
+
+ 
+ router.get('/landingPage',varifyLogin,(req,res)=>{
+  let name={name:"HOME PAGE"}
+
+  res.render('admin/landing-page',{admin:true,name})
+ })
+ 
+ router.get('/notification',varifyLogin,(req,res)=>{
+   console.log("api call 222",req.body);
+   res.redirect('/admin/landing-page')
  })
 
- router.get('/principal',async(req,res)=>{
+ router.get('/principal',varifyLogin,async(req,res)=>{
+  let name={name:"PRINCIPAL & HOD"}
    let data= await adminHealpers.getPrincipalDetails()
-   res.render('admin/principal',{admin:true})
+   console.log("principal data ",data);
+   res.render('admin/principal',{admin:true,data,name})
 
+ })
+ router.post('/principal',varifyLogin,(req,res)=>{
+  let image= req.files.image
+   adminHealpers.createPrincipal(req.body,req.session.admin._id).then((response)=>{
+   // console.log("api response",response);
+      console.log(response);
+      console.log(response.status);
+      if(response.status){
+        image.mv('./public/assent/images/principal/'+response.id+'.jpg',(err,done)=>{
+          if(!err){
+            res.redirect('/admin/principal')
+          }else{
+            console.log(err);
+            //alert("image uploading error try again!")
+            res.redirect('/admin/principal')
+          }
+        })
+      }else{
+        //alert("Dont upload same data  try another one!")
+        res.redirect('/admin/principal')
+      }
+     
+    
+    
+   
+  })
  })
  
  

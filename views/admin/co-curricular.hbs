@@ -98,25 +98,23 @@
       </li>
       <!-- Divider -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-          aria-controls="collapsePages">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Co-Curricular</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
+                <a class="nav-link" href="/admin/coCurricular">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Co-Curricular</span></a>
+            </li>
 
-            <a class="collapse-item" href="/admin/coCurricular">All</a>
-
-          </div>
-        </div>
-      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="/admin/landingPage">
           <i class="fas fa-fw fa-cog"></i>
           <span>Home</span></a>
       </li>
+      <li class="nav-item">
+                <a class="nav-link" href="/admin/hod">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>HOD</span></a>
+            </li>
+
 
       <li class="nav-item">
         <a class="nav-link" href="/admin/principal">
@@ -178,9 +176,9 @@
                 <!-- Subtitle -->
                 <h5 class="blue-text pb-2"><strong>{{this.posision}} </strong></h5>
                 <h5 class="blue-text pb-2"><strong>{{this.department}} </strong></h5>
-<a class="btn btn-danger" type="reset">Cancel</a>
-                <a href="/admin/delete-coCurricular/{{this._id}}" onclick="return confirm('are u sure want to delete ?')"
-                  class="btn btn-success">Remove</a>
+                <a class="btn btn-danger" type="reset">Cancel</a>
+                <a href="/admin/delete-coCurricular/{{this._id}}"
+                  onclick="return confirm('are u sure want to delete ?')" class="btn btn-success">Remove</a>
                 <!-- Text -->
               </div>
             </div>
@@ -194,24 +192,7 @@
               <div class="view view-cascade team-img">
 
                 <img class="card-img-top" id="imageView" src="/assent/images/logos/user.png" alt="" />
-                <div class="overlay">
-                  <div class="w3l-social">
-                    <ul>
-                      <li>
-                        <a href="#"><i class="icofont-facebook"></i></a>
-                      </li>
-                      <li>
-                        <a href="mailto:sabeeshk1988@gmail.com"><i class="icofont-email"></i></a>
-                      </li>
-                      <li>
-                        <a href="#"><i class="icofont-instagram"></i></a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <a href="#!">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
+
               </div>
               <div class="card-body card-body-cascade text-center">
                 <!-- Title -->
@@ -220,7 +201,16 @@
                   <!-- Subtitle -->
                   <input type="text" class="input" name="posision" placeholder="Posision" required>
 
-                  <input type="text" class="input" name="department" placeholder="Department" required>
+                  <select class="input" name="department" id="" required>
+                    <option value="ncc">NCC</option>
+                    <option value="nss">NSS</option>
+                    <option value="iedc">IEDC</option>
+                    <option value="asap">ASAP</option>
+                    <option value="ceo">CEO</option>
+                    <option value="coo">COO</option>
+                    <option value="cmo">CMO</option>
+                    <option value="cfo">CFO</option>
+                  </select>
                   <!-- Text -->
                   <input type="file" class="input" onchange="viewImage(event)" name="image" required>
                   <button class="btn btn-danger" class="input" type="reset">Cancel</button>
