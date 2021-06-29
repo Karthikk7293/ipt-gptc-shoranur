@@ -20,11 +20,12 @@
 
           <div class="projects">
             <div class="row">
+              {{#each ncc}}
               <div class="col-lg-4 item ncc">
                 <div class="card">
                   <div class="card-head">
                     <img
-                      src="assent/images/portfolio/p1.jpg"
+                      src="/images/ncc/{{this._id}}.jpg"
                       alt=""
                       class="img-fluid card-img"
                     />
@@ -36,46 +37,13 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-lg-4 item nss">
-                <div class="card">
-                  <div class="card-head">
-                    <img
-                      src="assent/images/portfolio/p2.jpg"
-                      alt=""
-                      class="img-fluid card-img"
-                    />
-                    <!-- <div class="card-overlay"><h2>CSS</h2></div> -->
-                    <div class="card-hover">
-                      <h2>10-02-2020</h2>
-                      <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, quo repudiandae eaque maiores provident deserunt.</p> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-4 item ipt">
-                <div class="card">
-                  <div class="card-head">
-                    <img
-                      src="assent/images/portfolio/p13.jpg"
-                      alt=""
-                      class="img-fluid card-img"
-                    />
-                    <!-- <div class="card-overlay"><h2>Javascript</h2></div> -->
-                    <div class="card-hover">
-                      <h2>10-02-2020</h2>
-                      <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, quo repudiandae eaque maiores provident deserunt.</p> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+              {{/each}}
+              {{#each nss}}
               <div class="col-lg-4 item ncc">
                 <div class="card">
                   <div class="card-head">
                     <img
-                      src="assent/images/portfolio/p4.jpg"
+                      src="/images/nss/{{this._id}}.jpg"
                       alt=""
                       class="img-fluid card-img"
                     />
@@ -87,29 +55,13 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-lg-4 item nss">
-                <div class="card">
-                  <div class="card-head">
-                    <img
-                      src="assent/images/portfolio/p5.jpg"
-                      alt=""
-                      class="img-fluid card-img"
-                    />
-                    <!-- <div class="card-overlay"><h2>CSS</h2></div> -->
-                    <div class="card-hover">
-                      <h2>10-02-2020</h2>
-                      <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, quo repudiandae eaque maiores provident deserunt.</p> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+              {{/each}}
+              {{#each iedc }}
               <div class="col-lg-4 item ncc">
                 <div class="card">
                   <div class="card-head">
                     <img
-                      src="assent/images/portfolio/p6.jpg"
+                      src="/images/iedc/{{this._id}}.jpg"
                       alt=""
                       class="img-fluid card-img"
                     />
@@ -121,12 +73,13 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-lg-4 item iedc">
+              {{/each}}
+              {{#each hostel}}
+              <div class="col-lg-4 item ncc">
                 <div class="card">
                   <div class="card-head">
                     <img
-                      src="assent/images/portfolio/iedc.jpg"
+                      src="/images/hostel/{{this._id}}.jpg"
                       alt=""
                       class="img-fluid card-img"
                     />
@@ -138,12 +91,13 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-lg-4 item iedc">
+              {{/each}}
+              {{#each auditorium}}
+              <div class="col-lg-4 item ncc">
                 <div class="card">
                   <div class="card-head">
                     <img
-                      src="assent/images/portfolio/p6.jpg"
+                      src="/images/auditorium/{{this._id}}.jpg"
                       alt=""
                       class="img-fluid card-img"
                     />
@@ -155,12 +109,13 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-lg-4 item hostel">
+              {{/each}}
+              {{#each workshop}}
+              <div class="col-lg-4 item ncc">
                 <div class="card">
                   <div class="card-head">
                     <img
-                      src="assent/images/portfolio/hostel.jpg"
+                      src="/images/workshop/{{this._id}}.jpg"
                       alt=""
                       class="img-fluid card-img"
                     />
@@ -172,12 +127,13 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-lg-4 item aud">
+              {{/each}}
+              {{#each asap}}
+              <div class="col-lg-4 item ncc">
                 <div class="card">
                   <div class="card-head">
                     <img
-                      src="assent/images/portfolio/p11.jpg"
+                      src="/images/asap/{{this._id}}.jpg"
                       alt=""
                       class="img-fluid card-img"
                     />
@@ -189,12 +145,13 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-lg-4 item wk">
+              {{/each}}
+              {{#each library}}
+              <div class="col-lg-4 item ncc">
                 <div class="card">
                   <div class="card-head">
                     <img
-                      src="assent/images/portfolio/p12.jpg"
+                      src="/images/library/{{this._id}}.jpg"
                       alt=""
                       class="img-fluid card-img"
                     />
@@ -206,12 +163,13 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-lg-4 item lab">
+              {{/each}}
+              {{#each seminarhall}}
+              <div class="col-lg-4 item ncc">
                 <div class="card">
                   <div class="card-head">
                     <img
-                      src="assent/images/portfolio/p13"
+                      src="/images/seminarHall/{{this._id}}.jpg"
                       alt=""
                       class="img-fluid card-img"
                     />
@@ -223,12 +181,13 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-lg-4 item iedc">
+              {{/each}}
+              {{#each canteen}}
+              <div class="col-lg-4 item ncc">
                 <div class="card">
                   <div class="card-head">
                     <img
-                      src="assent/images/portfolio/p14"
+                      src="/images/canteen/{{this._id}}.jpg"
                       alt=""
                       class="img-fluid card-img"
                     />
@@ -240,91 +199,7 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-lg-4 item hostel">
-                <div class="card">
-                  <div class="card-head">
-                    <img
-                      src="assent/images/portfolio/p7.jpg"
-                      alt=""
-                      class="img-fluid card-img"
-                    />
-                    <!-- <div class="card-overlay"><h2>HTML</h2></div> -->
-                    <div class="card-hover">
-                      <h2>10-02-2020</h2>
-                      <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, quo repudiandae eaque maiores provident deserunt.</p> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-4 item asap">
-                <div class="card">
-                  <div class="card-head">
-                    <img
-                      src="assent/images/portfolio/p4.jpg"
-                      alt=""
-                      class="img-fluid card-img"
-                    />
-                    <!-- <div class="card-overlay"><h2>HTML</h2></div> -->
-                    <div class="card-hover">
-                      <h2>10-02-2020</h2>
-                      <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, quo repudiandae eaque maiores provident deserunt.</p> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-4 item semi">
-                <div class="card">
-                  <div class="card-head">
-                    <img
-                      src="assent/images/portfolio/p2.jpg"
-                      alt=""
-                      class="img-fluid card-img"
-                    />
-                    <!-- <div class="card-overlay"><h2>HTML</h2></div> -->
-                    <div class="card-hover">
-                      <h2>10-02-2020</h2>
-                      <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, quo repudiandae eaque maiores provident deserunt.</p> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-4 item lib">
-                <div class="card">
-                  <div class="card-head">
-                    <img
-                      src="assent/images/portfolio/p2.jpg"
-                      alt=""
-                      class="img-fluid card-img"
-                    />
-                    <!-- <div class="card-overlay"><h2>HTML</h2></div> -->
-                    <div class="card-hover">
-                      <h2>10-02-2020</h2>
-                      <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, quo repudiandae eaque maiores provident deserunt.</p> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-4 item canteen">
-                <div class="card">
-                  <div class="card-head">
-                    <img
-                      src="assent/images/portfolio/p2.jpg"
-                      alt=""
-                      class="img-fluid card-img"
-                    />
-                    <!-- <div class="card-overlay"><h2>HTML</h2></div> -->
-                    <div class="card-hover">
-                      <h2>10-02-2020</h2>
-                      <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, quo repudiandae eaque maiores provident deserunt.</p> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {{/each}}
             </div>
           </div>
         </div>

@@ -13,6 +13,20 @@ module.exports={
            resolve(data[0])
         })
     },
+    getNotification:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let notification= await db.get().collection(collection.NOTIFICATION_COLLECTION).find().toArray()
+            console.log(notification);
+            resolve(notification[0])
+        })
+    },
+    getScrollContent:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let scrollContent= await db.get().collection(collection.SCROLL_CONTENT_COLLECTION).find().toArray()
+            console.log(scrollContent);
+            resolve(scrollContent[0])
+        })
+    },
     getComputerDetails:()=>{
         return new Promise(async(resolve,reject)=>{
             let staff= await db.get().collection(collection.COMPUTER_COLLECTION).find().toArray()
@@ -145,7 +159,7 @@ module.exports={
             }
         })
     },
-    getPrintingHodDetails:()=>{
+    getHeadDetails:()=>{
         return new Promise(async(resolve,reject)=>{
             let data = await db.get().collection(collection.HOD_COLLECTION).findOne({department:"superintendents"})
             if(data){
@@ -153,6 +167,67 @@ module.exports={
             }else{
                 resolve({status:false})
             }
+        })
+    },
+    getNccImages:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let image = await db.get().collection(collection.NCC_COLLECTION).find().toArray()
+            resolve(image);
+        })
+    },
+    getNssImages:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let image = await db.get().collection(collection.NSS_COLLECTION).find().toArray()
+            resolve(image);
+        })
+    },
+    getIedcImages:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let image = await db.get().collection(collection.IEDC_COLLECTION).find().toArray()
+            console.log("iedc img",image);
+            resolve(image);
+        })
+    },
+    getHostelImages:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let image = await db.get().collection(collection.HOSTEL_COLLECTION).find().toArray()
+            resolve(image);
+        })
+    },
+    getAuditoriumImages:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let image = await db.get().collection(collection.AUDITORIUM_COLLECTION).find().toArray()
+            resolve(image);
+        })
+    },
+    getWorkshopImages:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let image = await db.get().collection(collection.WORKSHOP_COLLECTION).find().toArray()
+            resolve(image);
+        })
+    },
+    getAsapImages:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let image = await db.get().collection(collection.ASAP_COLLECTION).find().toArray()
+            resolve(image);
+        })
+    },
+    getSeminarhallImages:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let image = await db.get().collection(collection.SEMINARHALL_COLLECTION).find().toArray()
+            resolve(image);
+        })
+    },
+    getLibraryImages:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let image = await db.get().collection(collection.LIBRARY_COLLECTION).find().toArray()
+            resolve(image);
+        })
+    },
+    getCanteenImages:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let image = await db.get().collection(collection.CANTEEN_COLECTION).find().toArray()
+            resolve(image);
         })
     }
 }

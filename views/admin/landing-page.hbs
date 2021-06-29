@@ -145,35 +145,39 @@
 
         <div class="row text-center">
           <div class="col-lg-3 ">
-            <form action="/admin/notification" method="post" enctype="multipart/form-data">
-
-                  <!-- Text -->
-                  <input type="file" class="input" onchange="viewImage(event)" name="image">
-                  <input type="text"  class="input"  name="yyyyy">
+            <form class="notification" method="POST" action="/admin/landingpage">
+              <div class="fields-grid">
 
 
-                  <button class="btn btn-danger" class="input" type="reset">Cancel</button>
-                  <button class="btn btn-success" class="input" type="submit">Add New</button>
-                </form>
-           
-            
+                <div class="styled-input mt-5">
+                  <label class="text">Notification</label>
+                  <input type="text" value="notification" hidden>
+                  <textarea name="notification" class="notification"></textarea>
+                  
+                  <span></span>
+                </div>
+              </div>
+              <button class="btn btn-danger" class="input" type="reset">Cancel</button>
+              <button class="btn btn-success" class="input" type="submit">Update</button>
+            </form>
           </div>
 
 
            <div class="col-lg-3 ">
-            <form class="notification" action="/admin/scrollContent">
+            <form class="notification" method="POST" action="/admin/landingpage">
               <div class="fields-grid">
 
 
                 <div class="styled-input mt-5">
                   <label class="text">Scroll Content</label>
+                  <input type="text" value="scrollContent" hidden>
                   <textarea name="scrollContent" class="notification"></textarea>
                   
                   <span></span>
                 </div>
               </div>
-              <a href="" class="btn btn-danger">Cancel</a>
-              <a href="" class="btn btn-success">Update</a>
+              <button class="btn btn-danger" class="input" type="reset">Cancel</button>
+              <button class="btn btn-success" class="input" type="submit">Update</button>
             </form>
           </div>
 

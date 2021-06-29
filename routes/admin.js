@@ -1,15 +1,17 @@
 const { response } = require('express');
 var express = require('express');
+const session = require('express-session');
 var router = express.Router();
 var adminHealpers =require('../healpers/adminHealpers')
 
 const varifyLogin=(req,res,next)=>{
  let admin = req.session.adminLogged
+ console.log(req.session+'session');
   if (admin){
     next()
   }else{
-    res.redirect('admin/login')
-  }
+    res.redirect('/admin')  
+  } 
 }
 
 
@@ -20,7 +22,7 @@ router.get('/',async function(req, res, next) {
   res.render('admin',{admin:true})
 
   }else{
-    res.render('admin/login',{admin:true})
+    res.render('admin/login',{login:true})
   }
 
   
@@ -34,6 +36,17 @@ router.post('/',varifyLogin,(req,res)=>{
   res.redirect("/admin")
 
 })
+
+// router.get('/login',(req,res)=>{ 
+//   if(req.session.adminLogged){
+//     res.redirect('/admin')
+//   }else{
+//     res.render('admin/login',{'loginError':req.session.loginError}) 
+//     req.session.loginError=false
+//   }
+  
+// })
+
 
     
 router.post('/login',async(req,res)=>{
@@ -50,7 +63,8 @@ router.post('/login',async(req,res)=>{
    //console.log(req.session.admin)
         res.redirect('/admin')
     }else{
-      res.redirect('/admin/login')
+      loginError='Invalid Username or Password'
+      res.redirect('/admin/login',{loginError})
     }
 }) 
 })
@@ -626,7 +640,7 @@ adminHealpers.createCoCurricular(req.body,req.session.admin._id).then((response)
 
 
  router.get('/hod',varifyLogin,async(req,res)=>{
-  let name={name:"PRINCIPAL & HOD"}
+  let name={name:" HOD"}
   let data = await adminHealpers.getHodImages()
   res.render('admin/hod',{admin:true,name,data})
 })
@@ -668,19 +682,13 @@ router.get('/delete-hod/:id',varifyLogin,(req,res)=>{
 
 
  
- router.get('/landingPage',varifyLogin,(req,res)=>{
-  let name={name:"HOME PAGE"}
-
-  res.render('admin/landing-page',{admin:true,name})
- })
- 
  router.get('/notification',varifyLogin,(req,res)=>{
    console.log("api call 222",req.body);
-   res.redirect('/admin/landing-page')
+   res.redirect('/admin/landing-page') 
  })
 
  router.get('/principal',varifyLogin,async(req,res)=>{
-  let name={name:"PRINCIPAL & HOD"}
+  let name={name:"PRINCIPAL"}
    let data= await adminHealpers.getPrincipalDetails()
    console.log("principal data ",data);
    res.render('admin/principal',{admin:true,data,name})
@@ -712,7 +720,34 @@ router.get('/delete-hod/:id',varifyLogin,(req,res)=>{
    
   })
  })
+
+ router.get('/landingPage',varifyLogin,(req,res)=>{
+  let name={name:"HOME PAGE"}
+
+  res.render('admin/landing-page',{admin:true,name})
+ })
  
+ 
+ router.post('/landingpage',varifyLogin,(req,res)=>{
+   //console.log("api landing",req.body.notification);
+   //console.log("api landing",req.body.scrollContent);
+   if(req.body.notification){
+     console.log("api not",req.body.notification);
+     adminHealpers.createNotification(req.body.notification,req.session.admin._id).then((response)=>{
+       console.log(response.status);
+      res.redirect("/admin/landing-page");
+     })
+   }else{
+     console.log("api scr",req.body.scrollContent);
+     adminHealpers.createScrollContent(req.body.scrollContent,req.session.admin._id).then((response)=>{
+       console.log(response.status);
+       res.redirect("/admin/landing-page");
+     })
+    
+   }
+  //
+
+ })
  
  
 

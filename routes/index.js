@@ -6,11 +6,12 @@ var userHealpers =require('../healpers/userHealpers')
 router.get('/', async function(req, res, next) {
 
   let principal = await userHealpers.getPrincipalDetails()
-  console.log("api call principal" ,principal);
-
+  console.log("api call principal" ,principal); 
+let notification = await userHealpers.getNotification()
+let scrollContent = await userHealpers.getScrollContent()
   //let scrollContent =await userHealpers.getScrollContent()
   //console.log("api scroll contend",scrollContent);
-  res.render('index',{principal});
+  res.render('index',{principal,notification,scrollContent});
 });
 
 router.get('/aboutUs',(req,res)=>{
@@ -93,8 +94,22 @@ router.get('/fecilities',(req,res)=>{
 
 })
 
-router.get('/gallery',(req,res)=>{
-  res.render('user/gallery')
+router.get('/gallery',async(req,res)=>{
+  let ncc = await userHealpers.getNccImages()
+  console.log(ncc);
+  let nss = await userHealpers.getNssImages()
+  console.log(nss);
+  let iedc = await userHealpers.getIedcImages()
+  console.log(iedc);
+  let hostel = await userHealpers.getHostelImages()
+  let auditorium = await userHealpers.getAuditoriumImages()
+  let workshop = await userHealpers.getWorkshopImages()
+  let asap = await userHealpers.getAsapImages()
+  let library = await userHealpers.getLibraryImages()
+  let seminarhall = await userHealpers.getSeminarhallImages()
+  let canteen = await userHealpers.getCanteenImages()
+
+  res.render('user/gallery',{ncc,nss,iedc,hostel,auditorium,workshop,asap,library,seminarhall,canteen})
 })
 
 router.get('/bog',(req,res)=>{

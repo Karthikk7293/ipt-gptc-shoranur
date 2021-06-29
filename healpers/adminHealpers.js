@@ -592,7 +592,7 @@ module.exports={
 
     getLibraryImages:()=>{
         return new Promise(async(resolve,reject)=>{
-         let data = await db.get().collection(collection.SEMINARHALL_COLLECTION).find().toArray()
+         let data = await db.get().collection(collection.LIBRARY_COLLECTION).find().toArray()
             //console.log("staff",staff);
             resolve(data)
         })
@@ -744,6 +744,13 @@ module.exports={
             })
         })
     },
+    DeleteCocurricularImages:(staffId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.CO_CURRICULAR_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
     DeleteNccImages:(staffId)=>{
         return new Promise((resolve,reject)=>{
             db.get().collection(collection.NCC_COLLECTION).removeOne({_id:ObjectId(staffId)}).then((response)=>{
@@ -861,6 +868,47 @@ module.exports={
                 resolve({status:false})
             }
         })
+    },
+    createNotification:(notification,adminId)=>{
+        console.log("api admin",notification);
+        return new Promise(async(resolve,reject)=>{
+        let data=await db.get().collection(collection.NOTIFICATION_COLLECTION).findOne({admin:ObjectId(adminId)})
+        console.log("hai",data);    
+        if(!data){
+                
+            let notObj={
+                admin:ObjectId(adminId),
+                notification:notification+""
+            }
+            db.get().collection(collection.NOTIFICATION_COLLECTION).insertOne(notObj)
+            resolve({status:true})
+                
+            }else{
+               
+                resolve({status:false})
+                
+            }
+        })
+
+    },
+    createScrollContent:(scrollContent,adminId)=>{
+        console.log("api admin",scrollContent);
+        return new Promise(async(resolve,reject)=>{
+        let data=await db.get().collection(collection.SCROLL_CONTENT_COLLECTION).findOne({admin:ObjectId(adminId)})
+            if(!data){
+                let scrollObj={
+                    admin:ObjectId(adminId),
+                    scrollContent:scrollContent+""
+                }
+                db.get().collection(collection.SCROLL_CONTENT_COLLECTION).insertOne(scrollObj)
+                resolve({status:true})
+                
+            }else{
+                resolve({status:false})
+                
+            }
+        })
+
     }
 
 

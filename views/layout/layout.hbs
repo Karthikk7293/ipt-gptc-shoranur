@@ -404,12 +404,21 @@
   {{>userHeader}}
   {{/if}}
 
+  {{#if login}}
+  {{/if}}
+
   {{{body}}}
+  
+  {{#if login}}
+  {{/if}}
+
+
   {{#if admin}}
   {{>adminFooter}}
   {{else}}
   {{>userFooter}}
   {{/if}}
+
 
  
   <!-- script -->
