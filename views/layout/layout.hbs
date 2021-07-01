@@ -400,22 +400,15 @@
 <body>
   {{#if admin}}
   {{>adminHeader}}
-  {{else}}
+  {{/if}}
+  {{#if user}}
   {{>userHeader}}
   {{/if}}
-
-  {{#if login}}
-  {{/if}}
-
   {{{body}}}
-  
-  {{#if login}}
-  {{/if}}
-
-
   {{#if admin}}
   {{>adminFooter}}
-  {{else}}
+  {{/if}}
+  {{#if user}}
   {{>userFooter}}
   {{/if}}
 

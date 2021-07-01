@@ -67,6 +67,7 @@ router.post('/login',async(req,res)=>{
       res.redirect('/admin/login',{loginError})
     }
 }) 
+
 })
 router.get('/logout',(req,res)=>{
   console.log("api request");

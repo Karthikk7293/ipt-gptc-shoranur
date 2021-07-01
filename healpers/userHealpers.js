@@ -71,7 +71,7 @@ module.exports={
     },
     getNccOfficer:()=>{
         return new Promise(async(resolve,reject)=>{
-            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"ncc"})
+            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"NCC"})
             if(data){
                 resolve(data)
             }else{
@@ -81,7 +81,7 @@ module.exports={
     },
     getNssOfficer:()=>{
         return new Promise(async(resolve,reject)=>{
-            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"nss"})
+            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"NSS"})
             if(data){
                 resolve(data)
             }else{
@@ -91,7 +91,7 @@ module.exports={
     },
     getIedcOfficer:()=>{
         return new Promise(async(resolve,reject)=>{
-            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"iedc"})
+            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"IEDC"})
             if(data){
                 resolve(data)
             }else{
@@ -101,7 +101,7 @@ module.exports={
     },
     getCeoOfficer:()=>{
         return new Promise(async(resolve,reject)=>{
-            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"ceo"})
+            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"CEO"})
             if(data){
                 resolve(data)
             }else{
@@ -111,7 +111,7 @@ module.exports={
     },
     getCooOfficer:()=>{
         return new Promise(async(resolve,reject)=>{
-            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"coo"})
+            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"COO"})
             if(data){
                 resolve(data)
             }else{
@@ -121,7 +121,17 @@ module.exports={
     },
     getCmoOfficer:()=>{
         return new Promise(async(resolve,reject)=>{
-            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"cmo"})
+            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"CMO"})
+            if(data){
+                resolve(data)
+            }else{
+                resolve({status:false})
+            }
+        })
+    },
+    getAsapOfficer:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"ASAP"})
             if(data){
                 resolve(data)
             }else{
@@ -131,7 +141,17 @@ module.exports={
     },
     getCfoOfficer:()=>{
         return new Promise(async(resolve,reject)=>{
-            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"cfo"})
+            let data = await db.get().collection(collection.CO_CURRICULAR_COLLECTION).findOne({department:"CFO"})
+            if(data){
+                resolve(data)
+            }else{
+                resolve({status:false})
+            }
+        })
+    },
+    getPrintingHodDetails:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let data = await db.get().collection(collection.HOD_COLLECTION).findOne({department:"Printing"})
             if(data){
                 resolve(data)
             }else{
@@ -141,7 +161,7 @@ module.exports={
     },
     getElectronicsHodDetails:()=>{
         return new Promise(async(resolve,reject)=>{
-            let data = await db.get().collection(collection.HOD_COLLECTION).findOne({department:"electronics"})
+            let data = await db.get().collection(collection.HOD_COLLECTION).findOne({department:"Electronics"})
             if(data){
                 resolve(data)
             }else{
@@ -151,7 +171,7 @@ module.exports={
     },
     getComputerHodDetails:()=>{
         return new Promise(async(resolve,reject)=>{
-            let data = await db.get().collection(collection.HOD_COLLECTION).findOne({department:"computer"})
+            let data = await db.get().collection(collection.HOD_COLLECTION).findOne({department:"Computer"})
             if(data){
                 resolve(data)
             }else{
@@ -161,7 +181,7 @@ module.exports={
     },
     getHeadDetails:()=>{
         return new Promise(async(resolve,reject)=>{
-            let data = await db.get().collection(collection.HOD_COLLECTION).findOne({department:"superintendents"})
+            let data = await db.get().collection(collection.HOD_COLLECTION).findOne({department:"Superintendents"})
             if(data){
                 resolve(data)
             }else{

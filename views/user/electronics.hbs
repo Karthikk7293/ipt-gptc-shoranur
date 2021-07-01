@@ -118,9 +118,9 @@
                 </p> -->
 
              
-                <img src="/assent/images/electronics/Anjana.jpg" alt="Image" class="img-fluid rounded-circle mb-3 hodimg" />
+                <img src="/images/hod/{{hod._id}}.jpg" alt="Image" class="img-fluid rounded-circle mb-3 hodimg" />
                 <span class="d-block">
-                  <h3 style="text-align: center; color: #2c4964"> Anjana S</h3>
+                  <h3 style="text-align: center; color: #2c4964">{{hod.name}}</h3>
                   <h5 style="text-align: center; color: #888888">HOD</h5>
                 </span>
              
@@ -153,17 +153,13 @@
       <!-- Grid row -->
 
       <div class="owl-carousel owl-theme card-deck">
-        <div class="item">
+        
           {{#each staff}}
-          <!-- Card Wider -->
-          <div class="card card-cascade wider">
+          <div class="item" >
+          <div class=" card card-cascade wider">
             <!-- Card image -->
             <div class="view view-cascade team-img">
-              <img
-                class="card-img-top"
-                src="/assent/images/electronics/{{this._id}}.jpg"
-                alt="Card image cap"
-              />
+              <img class="card-img-top" src="/assent/images/electronics/{{this._id}}.jpg" alt="Card image cap" />
               <div class="overlay">
                 <div class="w3l-social">
                   <ul>
@@ -171,7 +167,7 @@
                       <a href="#"><i class="icofont-facebook"></i></a>
                     </li>
                     <li>
-                      <a href="http://captsharafudheenmm@gmail.com"><i class="icofont-email"></i></a>
+                      <a href="mailto:sabeeshk1988@gmail.com"><i class="icofont-email"></i></a>
                     </li>
                     <li>
                       <a href="#"><i class="icofont-instagram"></i></a>
@@ -183,21 +179,21 @@
                 <div class="mask rgba-white-slight"></div>
               </a>
             </div>
-
+  
             <!-- Card content -->
             <div class="card-body card-body-cascade text-center">
               <!-- Title -->
               <h4 class="card-title"><strong>{{this.name}}</strong></h4>
               <!-- Subtitle -->
               <h5 class="blue-text pb-2"><strong>{{this.posision}}</strong></h5>
-              <!-- <h6>Ph:9961667557</h6> -->
               <!-- Text -->
             </div>
           </div>
           <!-- Card Wider -->
         </div>
+  
         {{/each}}
-      </div>
+      
     </div>
   </section>
 
