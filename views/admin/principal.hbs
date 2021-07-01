@@ -194,7 +194,8 @@
         <img class="card-img-top cardimage" id="imageView" src="/assent/images/principal/{{data._id}}.jpg" alt="" />
 
         <a href="" class="btn btn-danger" type="reset">Cancel</a>
-        <a href="" class="btn btn-primary " type="submit">Delete</a>
+        
+        <a href="/admin/delete-principal/{{data._id}}" class="btn btn-primary " onclick="return confirm('Are you sure to want to delete ?')" type="submit">Delete</a>
         
       </div>
     </div>

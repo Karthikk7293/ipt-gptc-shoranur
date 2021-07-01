@@ -721,6 +721,11 @@ router.get('/delete-hod/:id',varifyLogin,(req,res)=>{
    
   })
  })
+ router.get('/delete-principal/:id',varifyLogin,(req,res)=>{
+   console.log("api call",req.params.id);
+   adminHealpers.deletePrincipal(req.params.id)
+res.redirect('/admin/princpal')
+ })
 
  router.get('/landingPage',varifyLogin,(req,res)=>{
   let name={name:"HOME PAGE"}

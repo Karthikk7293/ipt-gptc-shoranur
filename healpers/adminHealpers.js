@@ -852,6 +852,13 @@ module.exports={
             })
         })
     },
+    deletePrincipal:(principalId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.PRINCIPAL_COLLECTION).removeOne({_id:ObjectId(principalId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
     getHodImages:()=>{
         return new Promise(async(resolve,reject)=>{
          let data = await db.get().collection(collection.HOD_COLLECTION).find().toArray()
