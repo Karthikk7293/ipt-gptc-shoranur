@@ -727,10 +727,11 @@ router.get('/delete-hod/:id',varifyLogin,(req,res)=>{
 res.redirect('/admin/princpal')
  })
 
- router.get('/landingPage',varifyLogin,(req,res)=>{
+ router.get('/landingPage',varifyLogin,async(req,res)=>{
   let name={name:"HOME PAGE"}
-
-  res.render('admin/landing-page',{admin:true,name})
+  let not=await adminHealpers.getNotification()
+  let scroll = await adminHealpers.getScrollContent()
+  res.render('admin/landing-page',{admin:true,name,scroll,not})
  })
  
  
@@ -751,9 +752,23 @@ res.redirect('/admin/princpal')
      })
     
    }
-  //
+  
 
  })
+
+ router.get('/delete-notification/:id',(req,res)=>{
+  adminHealpers.deleteNotification(req.params.id).then((response)=>{
+    console.log(response);
+    res.redirect('/admin/landing-page');
+  })
+})
+ 
+router.get('/delete-scrollContent/:id',(req,res)=>{
+  adminHealpers.deleteScrollContent(req.params.id).then((response)=>{
+    console.log(response);
+    res.redirect('/admin/landing-page');
+  })
+})
  
  
 

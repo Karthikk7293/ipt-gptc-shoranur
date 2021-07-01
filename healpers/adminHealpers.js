@@ -916,6 +916,32 @@ module.exports={
             }
         })
 
+    },
+    getNotification:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let data =await db.get().collection(collection.NOTIFICATION_COLLECTION).find().toArray()
+            console.log("data",data[0]);
+            resolve(data[0]);
+        })
+    },
+    getScrollContent:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let data =await db.get().collection(collection.SCROLL_CONTENT_COLLECTION).find().toArray()
+            console.log("data",data[0]);
+            resolve(data[0]);
+        })
+    },
+    deleteScrollContent:(id)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.SCROLL_CONTENT_COLLECTION).removeOne({_id:ObjectId(id)})
+            resolve({status:true})
+        })
+    },
+    deleteNotification:(id)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.NOTIFICATION_COLLECTION).removeOne({_id:ObjectId(id)})
+            resolve({status:true})
+        })
     }
 
 

@@ -150,7 +150,7 @@
 
 
                 <div class="styled-input mt-5">
-                  <label class="text">Notification</label>
+                  <h4>Notification</h4>
                   <input type="text" value="notification" hidden>
                   <textarea name="notification" class="notification"></textarea>
                   
@@ -163,13 +163,13 @@
           </div>
 
 
-           <div class="col-lg-5 ">
+           <div class="col-lg-6 ">
             <form class="notification" method="POST" action="/admin/landingpage">
               <div class="fields-grid">
 
 
                 <div class="styled-input mt-5">
-                  <label class="text">Scroll Content</label>
+                  <h4>Scroll Content</h4>
                   <input type="text" value="scrollContent" hidden>
                   <textarea name="scrollContent" class="notification"></textarea>
                   
@@ -179,6 +179,48 @@
               <button class="btn btn-danger" class="input" type="reset">Cancel</button>
               <button class="btn btn-success" class="input" type="submit">Update</button>
             </form>
+          </div>
+
+        </div>
+
+        <div class="row text-center">
+          <div class="col-lg-6 ">
+            
+              <div class="fields-grid">
+
+
+                <div class="styled-input mt-5">
+                   <h4>Notification</h4>
+                   <div class="textarea">
+                      <h3><span>{{not.notification}}</span></h3>
+                   </div>
+                 
+
+                </div>
+              </div>
+              <a type="reset" class="btn btn-danger" >Cancel</a>
+              <a href="/admin/delete-notification/{{not._id}}" class="btn btn-success" onclick="return confirm('Are you sure to want to Delete this..?')" >Delete</a>
+            
+          </div>
+
+
+           <div class="col-lg-6 ">
+            
+              <div class="fields-grid">
+                
+
+                <div class="styled-input mt-5">
+                 <h4>Scroll Content</h4>
+                  
+                 <div class="textarea">
+                      <h3><span>{{scroll.scrollContent}}</span></h3>
+                   </div>
+                 
+                </div>
+              </div>
+              <a type="reset" class="btn btn-danger" >Cancel</a>
+              <a href="/admin/delete-scrollContent/{{scroll._id}}" class="btn btn-success" onclick="return confirm('Are you sure to want to Delete this..?')" >Delete</a>
+            
           </div>
 
         </div>
@@ -212,9 +254,20 @@
       height: 10rem;
      
     }
-.col-lg-3{
-  margin: 5rem;
+
+.row{
+  padding-top: 1rem;
+  padding-bottom: 3.5rem;
+}
+.textarea{
+  padding: 2rem;
   
+      height: 10rem;
+      box-sizing: border-box;
+      border:  2px 2px 2px 2px, black;
+      color: black;
+     
+
 }
     
   </style>
