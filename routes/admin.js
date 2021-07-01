@@ -641,7 +641,7 @@ adminHealpers.createCoCurricular(req.body,req.session.admin._id).then((response)
 
 
  router.get('/hod',varifyLogin,async(req,res)=>{
-  let name={name:" HOD"}
+  let name={name:" HOD & SENIOR SUPERINTENDENTS"}
   let data = await adminHealpers.getHodImages()
   res.render('admin/hod',{admin:true,name,data})
 })
