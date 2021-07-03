@@ -125,6 +125,10 @@ router.get('/contactUs',(req,res)=>{
   res.render('user/contactUs',{user:true})
 })
 
+router.post('/send-message',(req,res)=>{
+  console.log("api call",req.body);
+  res.redirect('/index');
+})
 
 
 router.get('/developers',(req,res)=>{

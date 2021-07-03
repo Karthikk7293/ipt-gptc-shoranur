@@ -19,7 +19,7 @@ const varifyLogin=(req,res,next)=>{
 router.get('/',async function(req, res, next) {
 
   if(req.session.adminLogged){
-  res.render('admin',{admin:true})
+  res.render('admin/landing-page',{admin:true})
 
   }else{
     res.render('admin/login',{login:true})
@@ -33,7 +33,7 @@ router.post('/',varifyLogin,(req,res)=>{
   console.log("api call", req.body);
   console.log("admin id",req.session.admin._id);
   
-  res.redirect("/admin")
+  res.redirect("/admin/landing-page")
 
 })
 
@@ -61,7 +61,7 @@ router.post('/login',async(req,res)=>{
         req.session.adminLogged=true
     req.session.admin=response.admin
    //console.log(req.session.admin)
-        res.redirect('/admin')
+        res.redirect('/admin/landing-page')
     }else{
       loginError='Invalid Username or Password'
       res.redirect('/admin/login',{loginError})
