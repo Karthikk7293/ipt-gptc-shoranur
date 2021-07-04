@@ -1,4 +1,5 @@
 var express = require('express');
+const nodeMailer = require('../healpers/nodeMailer');
 var router = express.Router();
 var userHealpers =require('../healpers/userHealpers')
 
@@ -127,7 +128,21 @@ router.get('/contactUs',(req,res)=>{
 
 router.post('/send-message',(req,res)=>{
   console.log("api call",req.body);
-  res.redirect('/index');
+
+  nodeMailer.sendMail(req.body).then((response)=>{
+    //console.log("api mail",response);
+    
+  })
+
+  res.redirect('/');
+  
+})
+
+router.post('/send-contact',(req,res)=>{
+  nodeMailer.sendMail(req.body).then((response)=>{
+    //console.log("api mail",response);
+    
+  })
 })
 
 

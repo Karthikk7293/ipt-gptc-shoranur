@@ -136,66 +136,8 @@
 
 
 
-    <div class="col-md-4">
-      <div class="head m-auto">
-        <h1>Principal</h1>
-      </div>
-
-      <!-- Card deck -->
-      <div class="card-deck ">
-
-        <div class="cards">
-
-
-
-          <!--Card content-->
-          <div class="card-body ">
-            <!--Title-->
-            <form method="POST" action="/admin" enctype="multipart/form-data">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
-                <input type="text" class="form-control" value="{{principal.name}}" id="exampleInputEmail1" name="name"
-                  aria-describedby="emailHelp">
-
-
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Qualifications</label>
-                <input type="text" class="form-control" value="{{principal.qualification}} " id="exampleInputPassword1"
-                  name="qualification">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Image</label>
-                <input type="file" class="form-control" onchange="viewImage(event)" id="exampleInputPassword1"
-                  name="image">
-
-              </div>
-
-              <div>
-                <button type="reset" class="btn btn-danger">Cancel</button>
-                <button type="submit" class="btn btn-primary">Update</button>
-              </div>
-
-            </form>
-
-          </div>
-        </div>
-        <!-- Card -->
-
-        <!-- Card -->
-      </div>
-
-    </div>
-    <div class="col-md-3 ml-auto mr-auto mt-5">
-      <!--Card image-->
-      <div class="view overlay ">
-        <img class="card-img-top cardimage"  src="/assent/images/logos/user.png" alt="" />
-       
-        <a href="#!">
-
-        </a>
-      </div>
-    </div>
+    
+    
     <!-- Card deck -->
 
 
@@ -209,22 +151,7 @@
 
   <!-- Logout Modal-->
 
-  <style>
-    .head {
-      width: 100%;
-      height: auto;
-    }
-
-    .cardimage {
-      width: 25rem;
-      height: 25rem;
-    }
-  </style>
-  <script>
-    function viewImage(event) {
-      document.getElementById('imageView').src = URL.createObjectURL(event.target.files[0])
-    }
-  </script>
+  
 
   <!-- Bootstrap core JavaScript-->
   <script src="/vendor/jquery/jquery.min.js"></script>

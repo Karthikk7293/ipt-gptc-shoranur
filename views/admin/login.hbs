@@ -174,18 +174,18 @@ transition: .3s ease all;
           
        <a href="/admin/end"><label for="show" class="close-btn fas fa-times" title="close"></label></a> 
         <div class="text">
-        Login Form</div>
+        LOGIN</div>
         {{#if loginError}}
         <p class="text-danger error" style="text-align: center;">{{loginError}}</p>
 
         {{/if}}
-     <form action="admin/login" method="POST">
+     <form action="/admin" method="POST">
           <div class="data">
-            <label>Email or Phone</label>
+            <label>USER NAME</label>
             <input type="email" name="email" required>
           </div>
      <div class="data pass_show">
-            <label>Password</label>
+            <label>PASSWORD</label>
             <input type="password" name="password" autocomplete="current-password" required>
           </div>
     
