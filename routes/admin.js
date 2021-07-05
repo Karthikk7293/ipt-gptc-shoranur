@@ -66,10 +66,11 @@ router.post('/', async (req, res) => {
     } else {
       //console.log("resposne and session error :")
       loginError = 'Invalid Username or Password'
-      res.redirect('/admin/login', { loginError })
+      res.render('admin/login', { loginError })
     }
   })
 })
+
 router.get('/logout', (req, res) => {
   console.log("api request");
   req.session.destroy()
